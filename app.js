@@ -22,6 +22,8 @@ class App extends Express {
         graphiql: true,
       })
     };
+    this.use(loggingMiddleware);
+    this.setRoutes();
   }
 
   graphqlSetting = () => {
@@ -95,12 +97,10 @@ class App extends Express {
     };
   }
 
-  listenStart = (port = 80) => {
+  setRoutes = () => {
     Object.keys(this.route).forEach((path) => {
       this.use(path, this.route[path]);
     });
-    this.use(loggingMiddleware);
-    this.listen(port);
   }
 };
 
