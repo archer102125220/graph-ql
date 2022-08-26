@@ -12,7 +12,7 @@ function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
-  const port = normalizePort(process.env.APP_PORT || '3000');
+  const port = process.env.APP_PORT || '3000';
 
   const bind = typeof port === 'string'
     ? 'Pipe ' + port
@@ -45,15 +45,15 @@ function onListening(services) {
   console.log(`✅  Running a GraphQL API server  at http://localhost:${bind}/graphql`);
 }
 
-function ipLog(request) {
-  console.log('-------------ip log---------------');
-  console.log('a user from :');
-  console.log(`${request.connection.remoteAddress}:${request.connection.remotePort}`);
-  //console.log('connection:');
-  //console.log(request.connection);
-  //console.log(request.headers["x-forwarded-for"],request.headers["X-Forwarded-Port"]);
-  console.log('headers:');
-  console.log(request.headers);
-  //console.log(request.connection);
-  console.log('-------------ip log end---------------');
-}
+// function ipLog(request) {
+//   console.log('-------------ip log---------------');
+//   console.log('a user from :');
+//   console.log(`${request.connection.remoteAddress}:${request.connection.remotePort}`);
+//   //console.log('connection:');
+//   //console.log(request.connection);
+//   //console.log(request.headers["x-forwarded-for"],request.headers["X-Forwarded-Port"]);
+//   console.log('headers:');
+//   console.log(request.headers);
+//   //console.log(request.connection);
+//   console.log('-------------ip log end---------------');
+// }
