@@ -8,6 +8,7 @@ import {
 } from 'graphql';
 import { RandomDieQuery } from '@/schema/RandomDie';
 import { MessageMutation, MessageQuery } from '@/schema/Message';
+import { UserListMutation, UserListQuery } from '@/schema/UserList';
 
 const loggingMiddleware = (req, res, next) => {
   console.log('ip:', req.ip);
@@ -56,6 +57,7 @@ class App extends Express {
         },
         ...RandomDieQuery,
         ...MessageQuery(this.fakeDatabase),
+        ...UserListQuery,
       },
     });
 
@@ -63,6 +65,7 @@ class App extends Express {
       name: 'Mutation',
       fields: {
         ...MessageMutation(this.fakeDatabase),
+        ...UserListMutation,
       },
     });
     this.schema = new GraphQLSchema({
