@@ -7,6 +7,8 @@ import {
   GraphQLString,
 } from 'graphql';
 
+const fakeDatabase = {};
+
 export class Message {
   constructor(id, { content, author }) {
     this.id = id;
@@ -32,7 +34,7 @@ export const MessageSchema = new GraphQLObjectType({
   },
 });
 
-export const MessageMutation = (fakeDatabase) => ({
+export const MessageMutation = {
   createMessage: {
     type: MessageSchema,
     args: {
@@ -61,9 +63,9 @@ export const MessageMutation = (fakeDatabase) => ({
       return new Message(id, input);
     },
   },
-});
+};
 
-export const MessageQuery = (fakeDatabase) => ({
+export const MessageQuery = {
   getMessage: {
     type: MessageSchema,
     args: {
@@ -76,6 +78,6 @@ export const MessageQuery = (fakeDatabase) => ({
       return new Message(id, fakeDatabase[id]);
     },
   },
-});
+};
 
 export default Message;

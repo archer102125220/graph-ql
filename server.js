@@ -3,10 +3,9 @@ import App from '@/app';
 
 const app = new App();
 const server = http.createServer(app);
-server.listen(4000, process.env.APP_HOST || '0.0.0.0');
+server.listen(process.env.APP_POST || 4000, process.env.APP_HOST || '0.0.0.0');
 server.on('error', onError);
 server.on('listening', () => onListening(server));
-// server.on('request', (request, response) => ipLog(request, response));
 
 function onError(error) {
   if (error.syscall !== 'listen') {
@@ -18,7 +17,6 @@ function onError(error) {
     ? 'Pipe ' + port
     : 'Port ' + port;
 
-  // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
       console.log('EACCES');
@@ -44,16 +42,3 @@ function onListening(services) {
   const bind = typeof addr === 'string' ? addr : addr.port;
   console.log(`✅  Running a GraphQL API server  at http://localhost:${bind}/graphql`);
 }
-
-// function ipLog(request) {
-//   console.log('-------------ip log---------------');
-//   console.log('a user from :');
-//   console.log(`${request.connection.remoteAddress}:${request.connection.remotePort}`);
-//   //console.log('connection:');
-//   //console.log(request.connection);
-//   //console.log(request.headers["x-forwarded-for"],request.headers["X-Forwarded-Port"]);
-//   console.log('headers:');
-//   console.log(request.headers);
-//   //console.log(request.connection);
-//   console.log('-------------ip log end---------------');
-// }
