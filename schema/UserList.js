@@ -110,7 +110,7 @@ export const UserListQuery = {
         password: crypto.createHash('sha1').update(password).digest('hex'),
       });
 
-      await userInfo.create();
+      await userInfo.find();
 
       if (!userInfo.account_id) {
         throw new Error('no message exists with user :', { account, password });

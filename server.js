@@ -39,6 +39,6 @@ function onError(error) {
 
 function onListening(services) {
   const addr = services.address();
-  const bind = typeof addr === 'string' ? addr : addr.port;
+  const bind = addr?.port || addr;
   console.log(`✅  Running a GraphQL API server  at http://localhost:${bind}/graphql`);
 }

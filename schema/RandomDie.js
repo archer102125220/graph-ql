@@ -41,9 +41,9 @@ export const RandomDieSchema = new GraphQLObjectType({
       args: {
         numRolls: { type: new GraphQLNonNull(GraphQLInt) },
       },
-      resolve: (RandomDieSchema, payload) => {
-        return RandomDieSchema.roll(payload);
-      },
+      // resolve: (RandomDieSchema, payload) => {
+      //   return RandomDieSchema.roll(payload);
+      // },
     },
   },
 });

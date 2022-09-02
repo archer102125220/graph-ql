@@ -6,7 +6,6 @@ import {
   GraphQLID,
   GraphQLString,
 } from 'graphql';
-
 const fakeDatabase = {};
 
 export class Message {
